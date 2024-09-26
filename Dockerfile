@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-ENV IPFS_VERSION=v0.29.0
+ENV IPFS_VERSION=v0.30.0
 ENV ARCH=amd64
 ENV IPFS_PATH=/data/ipfs
 
