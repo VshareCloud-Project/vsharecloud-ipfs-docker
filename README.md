@@ -5,11 +5,10 @@
 #### Pre-requisites
 - Docker
 
-#### Steps
-1. Clone the repository
-2. Run the following command to build the docker image
+#### Build
+This repository will be automatically built and pushed to the GitHub Container Registry. You can pull the image from the following location:
 ```bash
-docker build -t vsharecloud/ipfs .
+docker pull ghcr.io/vsharecloud-project/vsharecloud-ipfs-docker
 ```
 
 ### How to run
@@ -17,7 +16,7 @@ docker build -t vsharecloud/ipfs .
 #### Steps
 1. Run the following command to start the IPFS container
 ```bash
-docker run -d --name ipfs -p 4001:4001/tcp -p 4001:4001/udp -p 5001:5001 -p 8080:8080 -v ${LOCAL_IPFS_PATH}:/data/ipfs vsharecloud/ipfs
+docker run -d --name ipfs -p 4001:4001/tcp -p 4001:4001/udp -p 5001:5001 -p 8080:8080 -v ${LOCAL_IPFS_PATH}:/data/ipfs ghcr.io/vsharecloud-project/vsharecloud-ipfs-docker
 ```
 The Local IPFS path should be a directory on your local machine where the IPFS data will be stored.
 
