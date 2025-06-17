@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -f $IPFS_PATH/installed ]; then
     echo "IPFS has been installed."
@@ -13,7 +13,7 @@ if [ -f /data/ipfs-install/installed ]; then
     exit 0
 fi
 ipfs init
-bash /data/ipfs-install/ipfs-config.sh
+sh /data/ipfs-install/ipfs-config.sh
 # 安装完成
 touch /data/ipfs-install/installed
 touch $IPFS_PATH/installed

@@ -1,14 +1,14 @@
-FROM debian:bullseye
+FROM alpine:3
 
-ENV IPFS_VERSION=v0.31.0
+ENV IPFS_VERSION=v0.35.0
 ENV ARCH=amd64
 ENV IPFS_PATH=/data/ipfs
 
-RUN apt-get update && apt-get install -y wget
+RUN apk add --no-cache wget tar
 
 RUN wget https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
     && tar -xvzf go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
-    && mv go-ipfs/ipfs /usr/local/bin/ipfs \
+    && mv go-ipfs/ipfs /usr/bin/ipfs \
     && rm -rf go-ipfs go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz
 
 # Expose the ports for IPFS
@@ -23,4 +23,4 @@ COPY . /data/ipfs-install
 
 VOLUME [ "/data/ipfs" ]
 
-CMD [ "bash", "/data/ipfs-install/install.sh" ]
+CMD [ "sh", "/data/ipfs-install/install.sh" ]
