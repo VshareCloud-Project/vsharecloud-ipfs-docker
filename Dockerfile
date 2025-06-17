@@ -8,7 +8,7 @@ RUN apk add --no-cache wget tar
 
 RUN wget https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
     && tar -xvzf go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
-    && mv go-ipfs/ipfs /usr/bin/ipfs \
+    && sh go-ipfs/install.sh \
     && rm -rf go-ipfs go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz
 
 # Expose the ports for IPFS
