@@ -1,10 +1,13 @@
-FROM alpine:3
-
+FROM debian:bookworm
 ENV IPFS_VERSION=v0.35.0
 ENV ARCH=amd64
 ENV IPFS_PATH=/data/ipfs
 
-RUN apk add --no-cache wget tar
+RUN apt install -y --no-install-recommends \
+    wget \
+    tar \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://dist.ipfs.io/go-ipfs/${IPFS_VERSION}/go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
     && tar -xvzf go-ipfs_${IPFS_VERSION}_linux-${ARCH}.tar.gz \
@@ -23,4 +26,4 @@ COPY . /data/ipfs-install
 
 VOLUME [ "/data/ipfs" ]
 
-CMD [ "sh", "/data/ipfs-install/install.sh" ]
+CMD [ "bash", "/data/ipfs-install/install.sh" ]
